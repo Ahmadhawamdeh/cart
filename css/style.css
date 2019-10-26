@@ -4,10 +4,11 @@ html {
   width: 100%;
 }
 body {
-  background-image: linear-gradient( to top right, #fff, #ccc);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url('https://www.quantumblack.com/static/hero-home-66ad0082c5fa59b705aec799685a5a5e-6ded7.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body>header {
   background: #062f4f;

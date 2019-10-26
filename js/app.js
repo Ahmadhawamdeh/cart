@@ -5,29 +5,29 @@ var Cart = function(items) {
 };
 
 Cart.prototype.addItem = function(product, quantity) {
-  var newItem = new CartItem(product, quantity);
+  var newItem = new CartItems(product, quantity);
   this.items.push(newItem);
 };
 
-Cart.prototype.saveToLocalStorage = function() {
+Cart.prototype.saveStorage = function() {
   localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
-Cart.prototype.removeItem = function(item) {
+Cart.prototype.delete = function(item) {
   this.items.splice(item, 1);
 };
 
-Cart.prototype.updateCounter = function() {
-  document.getElementById('itemCount').textContent = '(' + this.items.length + ')';
+Cart.prototype.renewCounter = function() {
+  document.getElementById('totalCount').textContent = '(' + this.items.length + ')';
 };
 
-var CartItem = function(product, quantity) {
+var CartItems = function(product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
-var Product = function(filePath, name) {
-  this.filePath = filePath;
+var Product = function(folder, name) {
+  this.folder = folder;
   this.name = name;
   Product.allProducts.push(this);
 };

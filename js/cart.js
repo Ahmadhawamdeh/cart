@@ -12,7 +12,7 @@ function renderCart() {
   loadCart();
   clearCart();
   showCart();
-  cart.updateCounter();
+  cart.renewCounter();
 }
 
 function clearCart() {
@@ -51,8 +51,8 @@ function showCart() {
 
 function removeItemFromCart(event) {
   if (event.target.classList.contains('remover')) {
-    cart.removeItem(parseInt(event.target.id));
-    cart.saveToLocalStorage();
+    cart.delete(parseInt(event.target.id));
+    cart.saveStorage();
     renderCart();
   }
 }
