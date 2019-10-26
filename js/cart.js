@@ -3,56 +3,56 @@
 var table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 var cart;
-function loadCart() {
+function newFcart() {
   var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
 }
 
 function renderCart() {
-  loadCart();
-  clearCart();
-  showCart();
-  cart.renewCounter();
+  newFcart();
+  deleteCart();
+  Presentation();
+  cart.updateCounter();
 }
 
-function clearCart() {
-  var tableRows = document.querySelectorAll('#cart tbody tr');
+function deleteCart() {
+  var tabRows = document.querySelectorAll('#cart tbody tr');
 
-  for (var i = 0; i <= tableRows.length; i++) {
-    if (tableRows[i]) {
-      tableRows[i].remove();
+  for (var i = 0; i <= tabRows.length; i++) {
+    if (tabRows[i]) {
+      tabRows[i].remove();
     }
   }
 }
 
-function showCart() {
-  var tableBody = document.querySelector('#cart tbody');
+function Presentation() {
+  var tabData = document.querySelector('#cart tbody');
 
   for (var i in cart.items) {
     var tr = document.createElement('tr');
 
-    var xTD = document.createElement('td');
-    xTD.textContent = 'x';
-    xTD.classList.add('remover');
-    xTD.id = i;
+    var tabDataone = document.createElement('td');
+    tabDataone.textContent = 'x';
+    tabDataone.classList.add('deletecup');
+    tabDataone.id = i;
 
-    var qTD = document.createElement('td');
-    qTD.textContent = cart.items[i].quantity;
+    var tabDatatwo = document.createElement('td');
+    tabDatatwo.textContent = cart.items[i].quantity;
 
-    var iTD = document.createElement('td');
-    iTD.textContent = cart.items[i].product;
+    var tabDatathree = document.createElement('td');
+    tabDatathree.textContent = cart.items[i].product;
 
-    tableBody.appendChild(tr);
-    tr.appendChild(xTD);
-    tr.appendChild(qTD);
-    tr.appendChild(iTD);
+    tabData.appendChild(tr);
+    tr.appendChild(tabDataone);
+    tr.appendChild(tabDatatwo);
+    tr.appendChild(tabDatathree);
   }
 }
 
 function removeItemFromCart(event) {
-  if (event.target.classList.contains('remover')) {
+  if (event.target.classList.contains('deletecup')) {
     cart.delete(parseInt(event.target.id));
-    cart.saveStorage();
+    cart.saveToLocalStorage();
     renderCart();
   }
 }

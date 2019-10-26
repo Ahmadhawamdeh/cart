@@ -9,7 +9,7 @@ Cart.prototype.addItem = function(product, quantity) {
   this.items.push(newItem);
 };
 
-Cart.prototype.saveStorage = function() {
+Cart.prototype.saveToLocalStorage = function() {
   localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
@@ -17,7 +17,7 @@ Cart.prototype.delete = function(item) {
   this.items.splice(item, 1);
 };
 
-Cart.prototype.renewCounter = function() {
+Cart.prototype.updateCounter = function() {
   document.getElementById('totalCount').textContent = '(' + this.items.length + ')';
 };
 
